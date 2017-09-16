@@ -1,2 +1,23 @@
-<h1>Student#feedback</h1>
-<p>Find me in app/views/student/feedback.html.erb</p>
+<h1>Manager#view_feedback</h1>
+
+<%=form_for @feedback, url: {action: "feedback"} do |f| %>
+<table summary="Subject form fields">
+  <tr>
+    <th>s_id</th>
+    <td><%= f.text_field(:s_id) %></td>
+  </tr>
+  <tr>
+    <th>name</th>
+    <td><%= f.text_field(:name) %></td>
+  </tr>
+  <tr>
+    <th>feedback</th>
+    <td><%= f.text_field(:feedback) %></td>
+  </tr>
+  <tr>
+    <th>status</th>
+    <td><%= f.text_field(:status) %></td>
+  </tr>
+</table>
+      <%= f.submit("Add Student") %>
+<% end %>

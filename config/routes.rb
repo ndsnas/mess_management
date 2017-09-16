@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
 
   get 'student/view_menu'
+  get 'student/login'
+  post 'student/login'
   get 'student/view_bill'
   get 'student/apply_mess'
   get 'student/pay_bill'

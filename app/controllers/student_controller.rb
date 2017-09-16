@@ -1,5 +1,21 @@
 class StudentController < ApplicationController
-  def index
+# Login page for student
+  def login
+    if request.get?
+      @logincred = Login.new      
+    end
+
+    if request.post?
+      @logincred = Login.new(login_params)
+      @logintable = Login.all
+# Don't know if I really need it?
+
+    end
+  end
+
+# Dashboard for student
+  def dashboard
+
   end
 
   def view_menu
@@ -21,5 +37,24 @@ class StudentController < ApplicationController
   end
 
   def feedback
+    if request.get?
+      @feedback = Feedback.new
+    end
+
+    if request.post?
+      @feedback = Feedback.new(feedback_params)
+      if @feedback.save
+        flash[:notice] = "Successfully created..."
+      end
+    end
   end
 end
+
+private
+  def feedback_params
+    params.require(:feedback).permit(:name, :feedback, :status, :s_id)
+  end
+
+  def login_params
+    params.require(:login).permit(:s_id, :username, :password)
+  end

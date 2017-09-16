@@ -1,0 +1,19 @@
+<%= @logincred.inspect %>
+
+<%=form_for @logincred, url: {action: "login"} do |f| %>
+<table summary="Subject form fields">
+  <tr>
+    <th>s_id</th>
+    <td><%= f.text_field(:s_id) %></td>
+  </tr>
+  <tr>
+    <th>name</th>
+    <td><%= f.text_field(:username) %></td>
+  </tr>
+  <tr>
+    <th>password</th>
+    <td><%= f.text_field(:password) %></td>
+  </tr>
+</table>
+      <%= f.submit("Login") %>
+<% end %>
