@@ -1,2 +1,23 @@
 <h1>Manager#add_student</h1>
-<p>Find me in app/views/manager/add_student.html.erb</p>
+<%=form_for @student, url: {action: "add_student"} do |f| %>
+<table summary="Subject form fields">
+  <tr>
+    <th>Name</th>
+    <td><%= f.text_field(:name) %></td>
+  </tr>
+  <tr>
+    <th>Roll_no</th>
+    <td><%= f.text_field(:roll_no) %></td>
+  </tr>
+  <tr>
+    <th>Phone</th>
+    <td><%= f.text_field(:phone) %></td>
+  </tr>
+  <tr>
+    <th>Email</th>
+    <td><%= f.text_field(:email) %></td>
+  </tr>
+</table>
+      <%= f.submit("Add Student") %>
+  <% end %>
+</div>

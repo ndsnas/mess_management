@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   root 'front#index'
 
+
+
   get 'student/view_menu'
   get 'student/view_bill'
   get 'student/apply_mess'
@@ -12,7 +14,9 @@ Rails.application.routes.draw do
   get 'student/change_password'
   get 'student/feedback'
 
+  #resources :manager
   get 'manager/add_student'
+  post 'manager/add_student'
   get 'manager/delete_student'
   get 'manager/view_menu'
   get 'manager/update_menu'
@@ -25,6 +29,8 @@ Rails.application.routes.draw do
   get 'manager/update_stock'
   get 'manager/monthly_profit_analysis'
   get 'manager/view_feedback'
+  post 'manager/create'
+
 
 
 
