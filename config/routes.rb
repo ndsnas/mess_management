@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'student/purchase_history'
   get 'student/change_password'
   get 'student/feedback'
+  post 'student/feedback'
 
   get 'manager/add_student'
   get 'manager/delete_student'

@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170912113658) do
 
-  create_table "extras", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "extras", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "roll_no"
     t.string "name"
     t.string "item"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20170912113658) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "feedbacks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "feedbacks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "s_id"
     t.string "name"
     t.string "feedback"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20170912113658) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.integer "item_id"
     t.string "item_name"
     t.integer "price"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20170912113658) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "logins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "logins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.integer "s_id"
     t.string "username"
     t.string "password"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20170912113658) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "menus", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "menus", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "day"
     t.string "meal1"
     t.string "meal2"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20170912113658) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "mess_cuts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "mess_cuts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "roll_no"
     t.string "name"
     t.date "from"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20170912113658) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "stocks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "stocks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "stock_id"
     t.string "stock_name"
     t.float "quantity", limit: 24
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 20170912113658) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "students", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "students", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "roll_no"
     t.string "name"
     t.integer "phone"

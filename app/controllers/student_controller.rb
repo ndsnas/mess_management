@@ -1,11 +1,14 @@
 class StudentController < ApplicationController
+  def index
+  end
+
   def view_menu
   end
 
   def view_bill
   end
 
-  def apply_mess
+  def apply_mess_cut
   end
 
   def pay_bill
