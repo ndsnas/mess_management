@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'student/purchase_history'
   get 'student/change_password'
   get 'student/feedback'
+  post 'student/feedback'
 
   #resources :manager
   get 'manager/add_student'
