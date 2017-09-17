@@ -15,7 +15,6 @@ class StudentController < ApplicationController
 
 # Dashboard for student
   def dashboard
-
   end
 
   def view_menu
