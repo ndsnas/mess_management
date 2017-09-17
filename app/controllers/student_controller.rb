@@ -2,7 +2,7 @@ class StudentController < ApplicationController
 # Login page for student
   def login
     if request.get?
-      @logincred = Login.new      
+      @logincred = Login.new
     end
 
     if request.post?
@@ -52,7 +52,7 @@ end
 
 private
   def feedback_params
-    params.require(:feedback).permit(:name, :feedback, :status, :s_id)
+    params.require(:feedback).permit(:name, :status, :s_id)
   end
 
   def login_params

@@ -2,19 +2,14 @@ class ManagerController < ApplicationController
   def add_student
 
 
-  #  @student = Student.new
+
   if request.get?
-  @student = Student.new()
-  puts '123'
+  @student = Student.new
+  end
 
-end
-#if(student_params.has_key?(:roll_no))
 if request.post?
-  puts @student
-  flash[:notice] = "Successfully created..."
-  puts 'abc'
-
- if @student.save(student_params)
+  @student = Student.new(student_params)
+   if @student.save
 
     flash[:notice] = "Successfully created..."
 end
@@ -25,11 +20,22 @@ end
 
   end
 
-  def create
-
-  end
 
   def delete_student
+
+    if request.get?
+      @student = Student.new
+      #@student = Student.find(params[:id])
+    end
+
+
+
+if request.post?
+    @student = Student.find_by_roll_no(params[:student][:roll_no])
+  @student.destroy
+  flash[:notice] = "Successfully deleted '#{@student.name}'..."
+#  redirect_to(subjects_path)
+end
   end
 
   def view_menu
@@ -72,7 +78,7 @@ end
   private
       def student_params
 
-        params.require(:roll_no).permit(:name, :phone, :email)
+        params.require(:student).permit(:name, :phone, :roll_no, :email)
 
       end
 

@@ -1,2 +1,13 @@
 <h1>Manager#delete_student</h1>
-<p>Find me in app/views/manager/delete_student.html.erb</p>
+<h2>Delete Student</h2>
+
+<%=form_for @student, url: {action: "delete_student"} do |f| %>
+<table summary="Subject form fields">
+  <tr>
+    <th>roll_no</th>
+    <td><%= f.text_field(:roll_no) %></td>
+  </tr>
+  <tr>
+  </table>
+        <%= f.submit("Delete Student") %>
+    <% end %>

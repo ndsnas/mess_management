@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   get 'manager/add_student'
   post 'manager/add_student'
   get 'manager/delete_student'
+  post 'manager/delete_student'
+  delete 'manager/delete_student'
   get 'manager/view_menu'
   get 'manager/update_menu'
   get 'manager/add_mess_cut'
