@@ -43,9 +43,11 @@ end
   end
 
   def update_menu
+
   end
 
   def add_mess_cut
+
   end
 
   def update_mess_cut
@@ -61,6 +63,7 @@ end
   end
 
   def view_stock
+    @stocks = Stock.all
   end
 
   def update_stock
@@ -74,6 +77,7 @@ end
 
   def show
   end
+
 
   private
       def student_params
