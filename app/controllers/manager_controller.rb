@@ -44,6 +44,20 @@ end
 
   def update_menu
 
+    if request.get?
+      @menus = Menu.all
+      #  @menu = Menu.find(params[:id])
+    end
+
+
+
+
+
+
+  #  @menu = Menu.find(params[:id])
+
+  # @menu.update_attributes(menu_params)
+
   end
 
   def add_mess_cut
@@ -76,15 +90,16 @@ end
     @feedbacks = Feedback.all
   end
 
-  def show
-  end
-
 
   private
       def student_params
 
-        params.require(:student).permit(:name, :phone, :roll_no, :email)
+        params.require(:student).permit(:name, :phone, :roll_no, :email, :password)
 
+      end
+
+      def menu_params
+        params.require(:menu).permit(:day, :meal1, :meal2, :meal3)
       end
 
 end
