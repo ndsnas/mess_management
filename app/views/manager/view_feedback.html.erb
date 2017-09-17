@@ -1,2 +1,20 @@
 <h1>Manager#view_feedback</h1>
-<p>Find me in app/views/manager/view_feedback.html.erb</p>
+<table>
+    <tr>
+
+      <th>Roll no</th>
+      <th>Name</th>
+      <th>feedback</th>
+      <th>status</th>
+    </tr>
+   <% @feedbacks.each do |feedback| %>
+    <tr>
+      <td><%= feedback.s_id %></td>
+      <td class="center"><%= feedback.name %></td>
+      <td class="center"><%= feedback.feedback %></td>
+      <td class="center"><%= feedback.status %></td>
+
+
+    </tr>
+    <% end %>
+  </table>

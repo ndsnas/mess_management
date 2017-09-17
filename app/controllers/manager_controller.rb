@@ -73,6 +73,7 @@ end
   end
 
   def view_feedback
+    @feedbacks = Feedback.all
   end
 
   def show
