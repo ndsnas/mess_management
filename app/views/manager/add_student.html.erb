@@ -1,4 +1,9 @@
 <h1>Manager#add_student</h1>
+
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
 <%=form_for @student, url: {action: "add_student"} do |f| %>
 <table summary="Subject form fields">
   <tr>
