@@ -23,9 +23,19 @@ Rails.application.routes.draw do
   get 'manager/delete_student'
   post 'manager/delete_student'
   delete 'manager/delete_student'
-  get 'manager/view_menu'
-  post 'manager/view_menu'
-  get 'manager/update_menu'
+   get 'manager/view_menu'
+   post 'manager/view_menu'
+#  get 'manager/update_menu'
+#  post 'manager/update_menu'
+resources :manager, :only => [:update_menu] do
+  member do
+    get :update_menu
+    put :update_menu
+    patch :update_menu
+
+  end
+end
+
   get 'manager/add_mess_cut'
   get 'manager/update_mess_cut'
   get 'manager/per_month_fee_detail'

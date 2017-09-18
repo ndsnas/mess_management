@@ -3,23 +3,23 @@
 
 <%#  <%= form_for(@subject, :url => subjects_path, :method => 'patch') do |f| %> %>
 
-<%=form_for @student, url: {action: "update_menu"} do |f| %>
+<%=form_for @menu, url: {action: "update_menu"} do |f| %>
 <table summary="Subject form fields">
   <tr>
     <th>Name</th>
-    <td><%= f.text_field(:name) %></td>
+    <td><%= f.text_field(:day) %></td>
   </tr>
   <tr>
     <th>Name</th>
-    <td><%= f.text_field(:name) %></td>
+    <td><%= f.text_field(:meal1) %></td>
   </tr>
   <tr>
     <th>Name</th>
-    <td><%= f.text_field(:name) %></td>
+    <td><%= f.text_field(:meal2) %></td>
   </tr>
   <tr>
     <th>Name</th>
-    <td><%= f.text_field(:name) %></td>
+    <td><%= f.text_field(:meal3) %></td>
   </tr>
 </table>
     <%= f.submit("Update Subject") %>

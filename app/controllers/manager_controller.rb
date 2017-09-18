@@ -39,14 +39,24 @@ end
   end
 
   def view_menu
+    if request.get?
     @menus = Menu.all
+  end
+  if request.post?
+    @menu = Menu.find(params[:id])
+  end
   end
 
   def update_menu
 
-    if request.get?
-      @menus = Menu.all
-      #  @menu = Menu.find(params[:id])
+    #if request.get?
+      #@menus = Menu.all
+        @menu = Menu.find(params[:id])
+    #end
+
+    if request.patch?
+    #  @menu = Menu.find(params[:id])
+      @menu.update_attributes(menu_params)
     end
 
 
