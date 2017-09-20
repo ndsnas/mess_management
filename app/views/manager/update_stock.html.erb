@@ -1,2 +1,24 @@
 <h1>Manager#update_stock</h1>
-<p>Find me in app/views/manager/update_stock.html.erb</p>
+<%=form_for @stock, url: {action: "update_stock"} do |f| %>
+<table summary="Subject form fields">
+  <tr>
+    <th>stock_id</th>
+    <td><%= f.text_field(:stock_id) %></td>
+  </tr>
+  <tr>
+    <th>Name</th>
+    <td><%= f.text_field(:stock_name) %></td>
+  </tr>
+  <tr>
+    <th>Quantity</th>
+    <td><%= f.text_field(:quantity) %></td>
+  </tr>
+  <tr>
+    <th>Cost Per Unit</th>
+    <td><%= f.text_field(:cost_per_unit) %></td>
+  </tr>
+</table>
+    <%= f.submit("Update") %>
+
+
+<% end %>

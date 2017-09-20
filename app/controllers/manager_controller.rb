@@ -63,10 +63,22 @@ end
   end
 
   def view_stock
+    if request.get?
     @stocks = Stock.all
+    end
+    if request.post?
+      @stock = Stock.find(params[:id])
+    end
   end
 
   def update_stock
+    @stock = Stock.find(params[:id])
+    if request.patch?
+      if  @stock.update_attributes(stock_params)
+        flash[:notice] = "Successfully updated stock ... "
+        redirect_to(manager_view_stock_path)
+      end
+    end
   end
 
   def monthly_profit_analysis
@@ -86,6 +98,10 @@ end
 
       def menu_params
         params.require(:menu).permit(:day, :meal1, :meal2, :meal3)
+      end
+
+      def stock_params
+        params.require(:stock).permit(:stock_id, :stock_name, :quantity, :cost_per_unit)
       end
 
 end

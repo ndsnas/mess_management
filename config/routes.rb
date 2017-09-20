@@ -27,11 +27,14 @@ Rails.application.routes.draw do
    post 'manager/view_menu'
 #  get 'manager/update_menu'
 #  post 'manager/update_menu'
-resources :manager, :only => [:update_menu] do
+resources :manager, :only => [:update_menu, :update_stock] do
   member do
     get :update_menu
     put :update_menu
     patch :update_menu
+    get :update_stock
+    put :update_stock
+    patch :update_stock
 
   end
 end
@@ -42,7 +45,7 @@ end
   get 'manager/extra_per_day'
   get 'manager/backup_db'
   get 'manager/view_stock'
-  get 'manager/update_stock'
+  # get 'manager/update_stock'
   get 'manager/monthly_profit_analysis'
   get 'manager/view_feedback'
   post 'manager/create'
