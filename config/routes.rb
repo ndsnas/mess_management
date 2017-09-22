@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   delete 'manager/delete_student'
    get 'manager/view_menu'
    post 'manager/view_menu'
+   get'manager/login'
 #  get 'manager/update_menu'
 #  post 'manager/update_menu'
 resources :manager, :only => [:update_menu, :update_stock] do
@@ -35,6 +36,10 @@ resources :manager, :only => [:update_menu, :update_stock] do
     get :update_stock
     put :update_stock
     patch :update_stock
+    get :login
+    put :login
+    patch :login
+
 
   end
 end
