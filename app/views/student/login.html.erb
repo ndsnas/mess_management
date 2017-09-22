@@ -1,17 +1,14 @@
-<%= @logincred.inspect %>
-
+<% if @error == 1 %>
+  <%="Oops something went wrong"%>
+<% end %>
 <%=form_for @logincred, url: {action: "login"} do |f| %>
 <table summary="Subject form fields">
   <tr>
-    <th>s_id</th>
-    <td><%= f.text_field(:s_id) %></td>
+    <th style="text-align: left">Roll Number</th>
+    <td><%= f.text_field(:roll_no) %></td>
   </tr>
   <tr>
-    <th>name</th>
-    <td><%= f.text_field(:username) %></td>
-  </tr>
-  <tr>
-    <th>password</th>
+    <th style="text-align: left">Password</th>
     <td><%= f.text_field(:password) %></td>
   </tr>
 </table>
