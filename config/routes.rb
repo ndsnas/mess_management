@@ -26,9 +26,9 @@ Rails.application.routes.draw do
    get 'manager/view_menu'
    post 'manager/view_menu'
    get'manager/login'
-#  get 'manager/update_menu'
-#  post 'manager/update_menu'
-resources :manager, :only => [:update_menu, :update_stock] do
+  get 'manager/update_menu'
+  post 'manager/update_menu'
+resources :manager, :only => [:update_menu, :update_stock, :add_mess_cut, :update_mess_cut] do
   member do
     get :update_menu
     put :update_menu
@@ -39,13 +39,20 @@ resources :manager, :only => [:update_menu, :update_stock] do
     get :login
     put :login
     patch :login
-
+    # get :update_mess_cut
+    # put :update_mess_cut
+    # patch :update_mess_cut
+    # get :add_mess_cut
+    # put :add_mess_cut
+    # patch :add_mess_cut
 
   end
 end
 
   get 'manager/add_mess_cut'
-  get 'manager/update_mess_cut'
+  post 'manager/add_mess_cut'
+ get 'manager/update_mess_cut'
+ post 'manager/update_mess_cut'
   get 'manager/per_month_fee_detail'
   get 'manager/extra_per_day'
   get 'manager/backup_db'
