@@ -1,6 +1,14 @@
 class ManagerController < ApplicationController
 
 def login
+
+  if session[:admin] && session[:password]
+    @result = Adminn.where(admin: session[:admin] , password: session[:password])
+    if !@result.empty?
+     redirect_to(manager_dashboard_path)
+    end
+  end
+
   if request.get?
     @logincred = Adminn.new
     @error = 0
@@ -13,19 +21,32 @@ def login
     @result = Adminn.where(admin: @logincred.admin, password: @logincred.password)
   # If roll number and password exist
     if !@result.empty?
+      session[:admin] = @logincred.admin
+      session[:password] = @logincred.password
       redirect_to(manager_dashboard_path)
-    end
+
     else
       @error = 1
     end
     # @logintable = Login.all
 
   end
+end
 
+
+def logout
+  @logincred = Adminn.new
+  @error = 0
+  session.clear
+  render 'login'
+end
 
 
 
 def add_student
+  if !(session[:admin] || session[:password])
+    redirect_to(manager_login_path)
+  end
   if request.get?
     @student = Student.new
   end
@@ -40,6 +61,9 @@ end
 
 
 def delete_student
+  if !(session[:admin] || session[:password])
+    redirect_to(manager_login_path)
+  end
     if request.get?
       @student = Student.new
     end
@@ -53,6 +77,9 @@ end
 
 
 def view_menu
+  if !(session[:admin] || session[:password])
+    redirect_to(manager_login_path)
+  end
   if request.get?
     @menus = Menu.all
   end
@@ -63,6 +90,9 @@ end
 
 
 def update_menu
+  if !(session[:admin] || session[:password])
+    redirect_to(manager_login_path)
+  end
   @menu = Menu.find(params[:id])
   if request.patch?
     if  @menu.update_attributes(menu_params)
@@ -74,6 +104,9 @@ end
 
   def add_mess_cut
   #  @arr = ['yes', 'no']
+  if !(session[:admin] || session[:password])
+    redirect_to(manager_login_path)
+  end
     if request.get?
       @cuts = MessCut.all
     end
@@ -84,6 +117,9 @@ end
 
   def update_mess_cut
   #  @cut = MessCut.find(params[:id])
+  if !(session[:admin] || session[:password])
+    redirect_to(manager_login_path)
+  end
   @cuts = MessCut.all
     if request.patch?
 
@@ -95,9 +131,16 @@ end
   end
 
   def per_month_fee_detail
+    if !(session[:admin] || session[:password])
+      redirect_to(manager_login_path)
+    end
+
   end
 
   def extra_per_day
+    if !(session[:admin] || session[:password])
+      redirect_to(manager_login_path)
+    end
     if request.get?
       @extra = Extra.new
     end
@@ -111,18 +154,27 @@ end
   end
 
   def backup_db
+    if !(session[:admin] || session[:password])
+      redirect_to(manager_login_path)
+    end
   end
 
 def view_stock
+  if !(session[:admin] || session[:password])
+    redirect_to(manager_login_path)
+  end
     if request.get?
       @stocks = Stock.all
-    endroll_no
+    
     if request.post?
       @stock = Stock.find(params[:id])
     end
 end
 
   def update_stock
+    if !(session[:admin] || session[:password])
+      redirect_to(manager_login_path)
+    end
     @stock = Stock.find(params[:id])
     if request.patch?
       if  @stock.update_attributes(stock_params)
@@ -133,10 +185,23 @@ end
   end
 
   def monthly_profit_analysis
+    if !(session[:admin] || session[:password])
+      redirect_to(manager_login_path)
+    end
   end
 
   def view_feedback
+    if !(session[:admin] || session[:password])
+      redirect_to(manager_login_path)
+    end
     @feedbacks = Feedback.all
+  end
+
+  def update_bill
+    if !(session[:admin] || session[:password])
+      redirect_to(manager_login_path)
+    end
+
   end
 
 end

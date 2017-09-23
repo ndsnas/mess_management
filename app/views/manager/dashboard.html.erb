@@ -1,11 +1,15 @@
-<%= link_to("Add Student", student_view_menu_path) %>
+<h1>Welcome <%= session[:roll_no] %></h1>
+<%= link_to("Add Student", manager_add_student_path) %>
 <br>
-<%= link_to("Delete Student", student_apply_mess_cut_path ) %>
+<%= link_to("Delete Student", manager_delete_student_path ) %>
 <br>
-<%= link_to("View Menu", student_view_bill_path ) %>
+<%= link_to("View Menu", manager_view_menu_path ) %>
 <br>
 <%= link_to("Add Mess Cut",student_pay_bill_path ) %>
 <br>
-<%= link_to("View Stocks", student_purchase_history_path ) %>
+<%= link_to("View Stocks", manager_view_stock_path ) %>
 <br>
-<%= link_to("View Feedback", student_feedback_path) %>
+<%= link_to("View Feedback", manager_view_feedback_path) %>
+<br>
+<%= link_to("logout", manager_logout_path) %>
+<br>
