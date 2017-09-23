@@ -56,6 +56,7 @@ end
  post 'manager/update_mess_cut'
   get 'manager/per_month_fee_detail'
   get 'manager/extra_per_day'
+  post 'manager/extra_per_day'
   get 'manager/backup_db'
   get 'manager/view_stock'
   # get 'manager/update_stock'

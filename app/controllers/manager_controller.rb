@@ -98,7 +98,16 @@ end
   end
 
   def extra_per_day
-
+    if request.get?
+      @extra = Extra.new
+    end
+    if request.post?
+        @extra = Extra.new(extra_params)
+        if @extra.save
+          flash[:notice] = "Successfully created..."
+          redirect_to(manager_extra_per_day_path)
+        end
+   end
   end
 
   def backup_db
@@ -149,5 +158,11 @@ end
 
       def adminn_params
         params.require(:adminn).permit(:admin, :password)
+      end
+
+      def extra_params
+
+        params.require(:extra).permit(:roll_no, :item, :date)
+
       end
 end
