@@ -1,14 +1,24 @@
 class StudentController < ApplicationController
 # Login page for student
-  def login
+# Hackaround : Can we use direct variables here instead of using these class variables and all??
+  def login             
     if request.get?
-      @logincred = Login.new
+      @logincred = Student.new
+      @error = 0
     end
 
     if request.post?
-      @logincred = Login.new(login_params)
-      @logintable = Login.all
-# Don't know if I really need it?
+
+      @logincred = Student.new(login_params)
+    # @spassword = @logincred.password
+      @result = Student.where(roll_no: @logincred.roll_no, password: @logincred.password)
+    # If roll number and password exist
+      if !@result.empty?
+        redirect_to(student_dashboard_path)
+      else
+        @error = 1
+      end
+      # @logintable = Login.all
 
     end
   end
@@ -55,5 +65,5 @@ private
   end
 
   def login_params
-    params.require(:login).permit(:s_id, :username, :password)
+    params.require(:student).permit(:roll_no, :password)
   end
