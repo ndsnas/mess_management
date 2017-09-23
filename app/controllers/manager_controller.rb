@@ -1,7 +1,7 @@
 class ManagerController < ApplicationController
 
 def login
-
+  #skip_before_filter :verify_authenticity_token
   if session[:admin] && session[:password]
     @result = Adminn.where(admin: session[:admin] , password: session[:password])
     if !@result.empty?
@@ -12,6 +12,7 @@ def login
   if request.get?
     @logincred = Adminn.new
     @error = 0
+
   end
 
   if request.post?
@@ -23,6 +24,8 @@ def login
     if !@result.empty?
       session[:admin] = @logincred.admin
       session[:password] = @logincred.password
+      session[:v] = 1
+
       redirect_to(manager_dashboard_path)
 
     else
@@ -44,11 +47,12 @@ end
 
 
 def add_student
-  if !(session[:admin] || session[:password])
+
+  if ((session[:v] != 1) || !(session[:admin] || session[:password])  )
     redirect_to(manager_login_path)
   end
   if request.get?
-    @student = Student.new
+      @student = Student.new
   end
   if request.post?
       @student = Student.new(student_params)
@@ -165,7 +169,7 @@ def view_stock
   end
     if request.get?
       @stocks = Stock.all
-    
+
     if request.post?
       @stock = Stock.find(params[:id])
     end
@@ -226,8 +230,8 @@ end
       end
 
       def extra_params
-
         params.require(:extra).permit(:roll_no, :item, :date)
-
       end
+
+
 end
