@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   post 'student/feedback'
 
   #resources :manager
+  get 'manager/dashboard'
   get 'manager/add_student'
   post 'manager/add_student'
   get 'manager/delete_student'
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
    get 'manager/view_menu'
    post 'manager/view_menu'
    get'manager/login'
+   post'manager/login'
   get 'manager/update_menu'
   post 'manager/update_menu'
 resources :manager, :only => [:update_menu, :update_stock, :add_mess_cut, :update_mess_cut] do
@@ -37,9 +39,7 @@ resources :manager, :only => [:update_menu, :update_stock, :add_mess_cut, :updat
     get :update_stock
     put :update_stock
     patch :update_stock
-    get :login
-    put :login
-    patch :login
+
     # get :update_mess_cut
     # put :update_mess_cut
     # patch :update_mess_cut
