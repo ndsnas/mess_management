@@ -1,2 +1,24 @@
 <h1>Manager#extra_per_day</h1>
-<p>Find me in app/views/manager/extra_per_day.html.erb</p>
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
+<%=form_for @extra, url: {action: "extra_per_day"} do |f| %>
+<table summary="Subject form fields">
+  <tr>
+    <th>roll_no</th>
+    <td><%= f.text_field(:roll_no) %></td>
+  </tr>
+  <tr>
+    <th>Item Id</th>
+    <td><%= f.text_field(:item) %></td>
+  </tr>
+  <tr>
+    <th>Date</th>
+    <td><%= f.text_field(:date) %></td>
+  </tr>
+
+</table>
+      <%= f.submit("Add Extra") %>
+  <% end %>
+</div>

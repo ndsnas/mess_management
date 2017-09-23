@@ -2,16 +2,26 @@ class ManagerController < ApplicationController
 
 def login
   if request.get?
-    @login = login.new
+    @logincred = Adminn.new
+    @error = 0
   end
+
   if request.post?
-    @login = Login.find_by_roll_no(params[:roll_no])
-    if login && login.authenticate(params[:password])
-      session[:roll_no] = login.id
-      redirect_to root_url
+
+    @logincred = Adminn.new(adminn_params)
+  # @spassword = @logincred.password
+    @result = Adminn.where(admin: @logincred.admin, password: @logincred.password)
+  # If roll number and password exist
+    if !@result.empty?
+      redirect_to(manager_dashboard_path)
     end
-  end  
-end
+    else
+      @error = 1
+    end
+    # @logintable = Login.all
+
+  end
+
 
 
 
@@ -63,16 +73,41 @@ def update_menu
 end
 
   def add_mess_cut
-
+  #  @arr = ['yes', 'no']
+    if request.get?
+      @cuts = MessCut.all
+    end
+    if request.post?
+      @cut = MessCut.find(params[:id])
+    end
   end
 
   def update_mess_cut
+  #  @cut = MessCut.find(params[:id])
+  @cuts = MessCut.all
+    if request.patch?
+
+      if @cut.update_attributes(cut_params)
+        flash[:notice] = "Successfully updated menu ... "
+      #  redirect_to(manager_view_menu_path)
+      end
+    end
   end
 
   def per_month_fee_detail
   end
 
   def extra_per_day
+    if request.get?
+      @extra = Extra.new
+    end
+    if request.post?
+        @extra = Extra.new(extra_params)
+        if @extra.save
+          flash[:notice] = "Successfully created..."
+          redirect_to(manager_extra_per_day_path)
+        end
+   end
   end
 
   def backup_db
@@ -81,7 +116,7 @@ end
 def view_stock
     if request.get?
       @stocks = Stock.all
-    end
+    endroll_no
     if request.post?
       @stock = Stock.find(params[:id])
     end
@@ -104,6 +139,7 @@ end
     @feedbacks = Feedback.all
   end
 
+end
 
   private
       def student_params
@@ -120,4 +156,13 @@ end
         params.require(:stock).permit(:stock_id, :stock_name, :quantity, :cost_per_unit)
       end
 
+      def adminn_params
+        params.require(:adminn).permit(:admin, :password)
+      end
+
+      def extra_params
+
+        params.require(:extra).permit(:roll_no, :item, :date)
+
+      end
 end
