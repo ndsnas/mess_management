@@ -1,0 +1,24 @@
+<h1>Apply for Mess cut</h1>
+
+<%=form_for @messcut, url: {action: "apply_mess_cut"} do |f| %>
+<table summary="Subject form fields">
+  <tr>
+    <th style="text-align: left;">roll_no</th>
+    <td><%= f.text_field(:roll_no) %></td>
+  </tr>
+  <tr>
+    <th style="text-align: left;">name</th>
+    <td><%= f.text_field(:name) %></td>
+  </tr>
+  <tr>
+    <th style="text-align: left;">from</th>
+    <td><%= f.text_field(:from) %></td>
+  </tr>
+  <tr>
+    <th style="text-align: left;">to</th>
+    <td><%= f.text_field(:to) %></td>
+  </tr>
+
+</table>
+      <%= f.submit("Apply for mess cut") %>
+<% end %>

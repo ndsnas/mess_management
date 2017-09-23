@@ -1,3 +1,4 @@
+<h1>Welcome <%= session[:roll_no] %></h1>
 <%= link_to("View menu", student_view_menu_path) %>
 <br>
 <%= link_to("Apply for mess cut", student_apply_mess_cut_path ) %>
@@ -11,3 +12,6 @@
 <%= link_to("Change password", student_change_password_path ) %>
 <br>
 <%= link_to("Feedback", student_feedback_path) %>
+<br>
+<%= link_to("logout", student_logout_path) %>
+<br>

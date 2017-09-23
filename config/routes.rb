@@ -5,13 +5,15 @@ Rails.application.routes.draw do
   root 'front#index'
 
 
-
+  #resources :student
   get 'student/view_menu'
+  get 'student/logout'
   get 'student/login'
   post 'student/login'
   get 'student/dashboard'
   get 'student/view_bill'
   get 'student/apply_mess_cut'
+  post 'student/apply_mess_cut'
   get 'student/pay_bill'
   get 'student/purchase_history'
   get 'student/change_password'
