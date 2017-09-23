@@ -1,13 +1,16 @@
-<h1>Log In</h1>
-
-<%= form_tag login_path do %>
-  <div class="field">
-    <%= label_tag :roll_no %><br />
-    <%= text_field_tag :roll_no, params[:roll_no] %>
-  </div>
-  <div class="field">
-    <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
-  </div>
-  <div class="actions"><%= submit_tag "Log In" %></div>
+<% if @error == 1 %>
+  <%="Oops something went wrong"%>
+<% end %>
+<%=form_for @logincred, url: {action: "login"} do |f| %>
+<table summary="Subject form fields">
+  <tr>
+    <th style="text-align: left">Admin</th>
+    <td><%= f.text_field(:admin) %></td>
+  </tr>
+  <tr>
+    <th style="text-align: left">Password</th>
+    <td><%= f.text_field(:password) %></td>
+  </tr>
+</table>
+      <%= f.submit("Login") %>
 <% end %>

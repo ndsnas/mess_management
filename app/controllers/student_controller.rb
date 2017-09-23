@@ -1,7 +1,7 @@
 class StudentController < ApplicationController
 # Login page for student
 # Hackaround : Can we use direct variables here instead of using these class variables and all??
-  def login             
+  def login
     if request.get?
       @logincred = Student.new
       @error = 0
