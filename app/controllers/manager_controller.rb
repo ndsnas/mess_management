@@ -273,6 +273,36 @@ class ManagerController < ApplicationController
   #   redirect_to(manager_login_path)
   #
   # end
+
+  def change_password
+    if !(session[:roll_no] || session[:password])
+      redirect_to(student_login_path)
+    end
+
+    if request.get?
+      @credentials = Adminn.new
+      @savedornot = ""
+    end
+
+    if request.post?
+      @savedornot = ""
+      @credentials = Adminn.new(changepass_params)
+      @querydb = Adminn.where(roll_no: session[:roll_no], password: @credentials.admin)
+      if !@querydb.empty?
+        @savedornot = "Successfully Changed the password"
+        @querydb[0].password = @credentials.password
+        @querydb[0].save
+      else
+        @savedornot = "You entered wrong Old password"
+      end
+    end
+
+
+  end
+
+
+
+
 end
 
 
@@ -301,4 +331,8 @@ private
 
   def fee_params
     params.require(:bill).permit(:status)
+  end
+
+  def changepass_params
+    params.require(:adminn).permit(:admin, :password)
   end

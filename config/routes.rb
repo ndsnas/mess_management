@@ -23,7 +23,9 @@ Rails.application.routes.draw do
   post 'student/feedback'
 
   #resources :manager
-  get 'manager/logout'
+  get 'manager/change_password'
+  # We might not need this one
+  post 'manager/change_password'
   get 'manager/dashboard'
   get 'manager/add_student'
   post 'manager/add_student'
