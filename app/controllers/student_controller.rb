@@ -125,6 +125,25 @@ class StudentController < ApplicationController
       redirect_to(student_login_path)  
     end
 
+    if request.get?
+      @credentials = Student.new
+      @savedornot = ""
+    end
+
+    if request.post?
+      @savedornot = ""
+      @credentials = Student.new(changepass_params)
+      @querydb = Student.where(roll_no: session[:roll_no], password: @credentials.email)
+      if !@querydb.empty?
+        @savedornot = "Successfully Changed the password"
+        @querydb[0].password = @credentials.password
+        @querydb[0].save
+      else
+        @savedornot = "You entered wrong Old password"
+      end
+    end
+
+
   end
 
   def feedback
@@ -156,4 +175,8 @@ private
 
   def messcut_params
     params.require(:mess_cut).permit(:roll_no, :name, :from, :to)
+  end
+  
+  def changepass_params
+    params.require(:student).permit(:email, :password)
   end

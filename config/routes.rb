@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get 'student/pay_bill'
   get 'student/purchase_history'
   get 'student/change_password'
+  # We might not need this one
+  post 'student/change_password'
   get 'student/feedback'
   post 'student/feedback'
 
