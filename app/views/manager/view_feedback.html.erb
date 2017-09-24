@@ -7,12 +7,12 @@
       <th>feedback</th>
       <th>status</th>
     </tr>
-   <% @feedbacks.each do |feedback| %>
+    <% @feedbacks.each do |f| %>
     <tr>
-      <td><%= feedback.s_id %></td>
-      <td class="center"><%= feedback.name %></td>
-      <td class="center"><%= feedback.feedback %></td>
-      <td class="center"><%= feedback.status %></td>
+      <td class="center"><%= f.s_id %></td>
+      <td class="center"><%= f.name %></td>
+      <td class="center"><%= f.feedback %></td>
+      <td class="center"><%= f.status %></td>
     </tr>
     <% end %>
   </table>
