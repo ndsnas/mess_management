@@ -85,7 +85,7 @@ class StudentController < ApplicationController
     end
 # Replace this hardcoded value with the session variables rollnumber and name
     # @purchased = Extra.where(roll_no: 123).group('item').count('item')
-    @purchased = Extra.where(roll_no: 123)
+    @purchased = Extra.where(roll_no: session[:roll_no])
 
   end
 
