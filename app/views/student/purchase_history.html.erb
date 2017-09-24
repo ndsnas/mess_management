@@ -1,1 +1,12 @@
-<%= @purchased.inspect %>
+<table>
+    <tr>
+      <th>Item name</th>
+      <th>Date</th>
+    </tr>
+   <% @purchased.each do |entry| %>
+    <tr>
+      <td><%= entry.item %></td>
+      <td ><%= entry.date %></td>
+    </tr>
+    <% end %>
+  </table>

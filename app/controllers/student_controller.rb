@@ -84,7 +84,8 @@ class StudentController < ApplicationController
       redirect_to(student_login_path)  
     end
 # Replace this hardcoded value with the session variables rollnumber and name
-    @purchased = Extra.where(roll_no: 123).group('item').count('item')
+    # @purchased = Extra.where(roll_no: 123).group('item').count('item')
+    @purchased = Extra.where(roll_no: 123)
 
   end
 
