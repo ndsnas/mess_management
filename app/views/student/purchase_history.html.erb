@@ -1,12 +1,78 @@
-<table>
-    <tr>
-      <th>Item name</th>
-      <th>Date</th>
-    </tr>
-   <% @purchased.each do |entry| %>
-    <tr>
-      <td><%= entry.item %></td>
-      <td ><%= entry.date %></td>
-    </tr>
-    <% end %>
-  </table>
+
+<div class="wrapper">
+       
+	<%= render 'ssidebar' %> 
+        <div class="main-panel">
+           <nav class="navbar navbar-transparent navbar-absolute">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#"> Purchase </a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
+                                    
+                                    <p class="hidden-lg hidden-md">Dashboard</p>
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
+                                    
+                                    <p class="hidden-lg hidden-md">Profile</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <form class="navbar-form navbar-right" role="search">
+                            
+                           
+                                <%= link_to("logout", student_logout_path) %>
+                               
+                            
+                        </form>
+                    </div>
+                </div>
+</nav>
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header" data-background-color="purple">
+                                    <h4 class="title">Purchase History</h4>
+                                    <p class="category"></p>
+                                </div>
+                                <div class="card-content">
+					<table>
+   						    <tr>
+						      <th>Item name</th>
+						      <th>Date</th>
+						    </tr>
+						   <% @purchased.each do |entry| %>
+						    <tr>
+						      <td><%= entry.item %></td>
+						      <td ><%= entry.date %></td>
+						    </tr>
+						    <% end %>
+						  </table>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <footer class="footer">
+                <div class="container-fluid">
+                    
+                </div>
+            </footer>
+        </div>
+    </div>
