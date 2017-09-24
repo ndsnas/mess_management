@@ -1,2 +1,24 @@
 <h1>Manager#per_month_fee_detail</h1>
-<p>Find me in app/views/manager/per_month_fee_detail.html.erb</p>
+<table>
+    <tr>
+
+      <th>roll_no</th>
+      <th>amount</th>
+      <th>status</th>
+      <th>month</th>
+    </tr>
+   <% @bills.each do |bill| %>
+    <tr>
+
+      <td class="center"><%= bill.roll_no %></td>
+      <td class="center"><%= bill.amount %></td>
+      <td class="center"><%= 'Pending' %></td>
+      <td class="center"><%= Date::MONTHNAMES[bill.month] %></td>
+      <td class="center">
+      <%= link_to("Update", update_per_month_fee_detail_manager_path(bill.id)) %>
+      </td>
+
+
+    </tr>
+    <% end %>
+  </table>
