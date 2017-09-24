@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170917191849) do
+ActiveRecord::Schema.define(version: 20170923132450) do
+
+  create_table "adminns", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "admin"
+    t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "roll_no"
+    t.float "amount", limit: 24
+    t.boolean "status"
+    t.integer "month"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "extras", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "roll_no"
@@ -18,6 +34,7 @@ ActiveRecord::Schema.define(version: 20170917191849) do
     t.string "item"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "date"
   end
 
   create_table "feedbacks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -38,9 +55,6 @@ ActiveRecord::Schema.define(version: 20170917191849) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
-  create_table "menus", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
-=======
   create_table "logins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "s_id"
     t.string "username"
@@ -50,7 +64,6 @@ ActiveRecord::Schema.define(version: 20170917191849) do
   end
 
   create_table "menus", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
->>>>>>> 6a1c49d37fb7871f862f6e52e84723ccb0b90253
     t.string "day"
     t.string "meal1"
     t.string "meal2"

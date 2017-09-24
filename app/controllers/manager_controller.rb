@@ -48,7 +48,7 @@ end
 
 def add_student
 
-  if ((session[:v] != 1) || !(session[:admin] || session[:password])  )
+  if ((session[:v] != 1) || !(session[:admin] || session[:password]))
     redirect_to(manager_login_path)
   end
   if request.get?
@@ -65,7 +65,7 @@ end
 
 
 def delete_student
-  if !(session[:admin] || session[:password])
+  if ((session[:v] != 1) || !(session[:admin] || session[:password]))
     redirect_to(manager_login_path)
   end
     if request.get?
@@ -81,7 +81,7 @@ end
 
 
 def view_menu
-  if !(session[:admin] || session[:password])
+  if ((session[:v] != 1) || !(session[:admin] || session[:password]))
     redirect_to(manager_login_path)
   end
   if request.get?
@@ -94,7 +94,7 @@ end
 
 
 def update_menu
-  if !(session[:admin] || session[:password])
+  if ((session[:v] != 1) || !(session[:admin] || session[:password]))
     redirect_to(manager_login_path)
   end
   @menu = Menu.find(params[:id])
@@ -108,7 +108,7 @@ end
 
   def add_mess_cut
   #  @arr = ['yes', 'no']
-  if !(session[:admin] || session[:password])
+  if ((session[:v] != 1) || !(session[:admin] || session[:password]))
     redirect_to(manager_login_path)
   end
     if request.get?
@@ -121,7 +121,7 @@ end
 
   def update_mess_cut
   #  @cut = MessCut.find(params[:id])
-  if !(session[:admin] || session[:password])
+  if ((session[:v] != 1) || !(session[:admin] || session[:password]))
     redirect_to(manager_login_path)
   end
   @cuts = MessCut.all
@@ -135,14 +135,40 @@ end
   end
 
   def per_month_fee_detail
-    if !(session[:admin] || session[:password])
+    if ((session[:v] != 1) || !(session[:admin] || session[:password]))
       redirect_to(manager_login_path)
+    end
+
+    if request.get?
+      @bills = Bill.where(:status => '0')
+    end
+    if request.post?
+      #@menu = Menu.find(params[:id])
     end
 
   end
 
+
+
+  def update_per_month_fee_detail
+    if ((session[:v] != 1) || !(session[:admin] || session[:password]))
+      redirect_to(manager_login_path)
+    end
+    @bill = Bill.find(params[:id])
+    if request.patch?
+      if  @bill.update_attributes(fee_params)
+        flash[:notice] = "Successfully updated menu ... "
+        redirect_to(manager_per_month_fee_detail_path)
+      end
+    end
+  end
+
+
+
+
+
   def extra_per_day
-    if !(session[:admin] || session[:password])
+    if ((session[:v] != 1) || !(session[:admin] || session[:password]))
       redirect_to(manager_login_path)
     end
     if request.get?
@@ -158,13 +184,16 @@ end
   end
 
   def backup_db
-    if !(session[:admin] || session[:password])
+    if ((session[:v] != 1) || !(session[:admin] || session[:password]))
       redirect_to(manager_login_path)
     end
+
+    #system ("backup perform -t db_backup")
+
   end
 
 def view_stock
-  if !(session[:admin] || session[:password])
+  if ((session[:v] != 1) || !(session[:admin] || session[:password]))
     redirect_to(manager_login_path)
   end
     if request.get?
@@ -176,7 +205,7 @@ def view_stock
 end
 
   def update_stock
-    if !(session[:admin] || session[:password])
+    if ((session[:v] != 1) || !(session[:admin] || session[:password]))
       redirect_to(manager_login_path)
     end
     @stock = Stock.find(params[:id])
@@ -189,20 +218,20 @@ end
   end
 
   def monthly_profit_analysis
-    if !(session[:admin] || session[:password])
+    if ((session[:v] != 1) || !(session[:admin] || session[:password]))
       redirect_to(manager_login_path)
     end
   end
 
   def view_feedback
-    if !(session[:admin] || session[:password])
+    if ((session[:v] != 1) || !(session[:admin] || session[:password]))
       redirect_to(manager_login_path)
     end
     @feedbacks = Feedback.all
   end
 
   def update_bill
-    if !(session[:admin] || session[:password])
+    if ((session[:v] != 1) || !(session[:admin] || session[:password]))
       redirect_to(manager_login_path)
     end
 
@@ -231,6 +260,10 @@ end
 
       def extra_params
         params.require(:extra).permit(:roll_no, :item, :date)
+      end
+
+      def fee_params
+        params.require(:bill).permit(:status)
       end
 
 
