@@ -69,7 +69,7 @@ end
   post 'manager/extra_per_day'
   get 'manager/backup_db'
   get 'manager/view_stock'
-  # get 'manager/update_stock'
+  get 'manager/update_bill'
   get 'manager/monthly_profit_analysis'
   get 'manager/view_feedback'
   post 'manager/create'
