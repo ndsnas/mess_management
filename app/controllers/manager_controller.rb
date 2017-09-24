@@ -163,10 +163,6 @@ end
     end
   end
 
-
-
-
-
   def extra_per_day
     if ((session[:v] != 1) || !(session[:admin] || session[:password]))
       redirect_to(manager_login_path)
@@ -188,7 +184,8 @@ end
       redirect_to(manager_login_path)
     end
 
-    #system ("backup perform -t db_backup")
+    #system("backup perform -t ~/db_backup")
+    #fork { exec 'backup perform -t db_backup' }
 
   end
 

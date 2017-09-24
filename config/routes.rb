@@ -47,9 +47,9 @@ resources :manager, :only => [:update_menu, :update_stock, :add_mess_cut, :updat
     put :update_per_month_fee_detail
     patch :update_per_month_fee_detail
 
-    # get :update_mess_cut
-    # put :update_mess_cut
-    # patch :update_mess_cut
+     get :update_mess_cut
+     put :update_mess_cut
+     patch :update_mess_cut
     # get :add_mess_cut
     # put :add_mess_cut
     # patch :add_mess_cut
@@ -59,8 +59,8 @@ end
 
   get 'manager/add_mess_cut'
   post 'manager/add_mess_cut'
- get 'manager/update_mess_cut'
- post 'manager/update_mess_cut'
+#  get 'manager/update_mess_cut'
+#  post 'manager/update_mess_cut'
   get 'manager/per_month_fee_detail'
   post 'manager/per_month_fee_detail'
   get 'manager/extra_per_day'

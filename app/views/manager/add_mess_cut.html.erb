@@ -21,10 +21,7 @@
       <td class="center"><%= cut.to %></td>
       <td class="center"><%= cut.status %></td>
       <td class="action">
-      <%= link_to("Accept", update_mess_cut_manager_path(cut.id, '1')) %>
-      </td>
-      <td class="action">
-      <%= link_to("Deny", update_mess_cut_manager_path(cut.id)) %>
+      <%= link_to("Update", update_mess_cut_manager_path(cut.id)) %>
       </td>
 
     </tr>
