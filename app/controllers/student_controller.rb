@@ -108,6 +108,15 @@ class StudentController < ApplicationController
     if !(session[:roll_no] || session[:password])
       redirect_to(student_login_path)  
     end
+      @currentbill = Bill.where(roll_no: session[:roll_no])
+      @totalbill = 0
+      if !@currentbill.empty?
+        @currentbill.each do |data|
+          @totalbill += data.amount
+        end
+      else
+        @totalbill = -1
+      end  
   end
 
   def purchase_history

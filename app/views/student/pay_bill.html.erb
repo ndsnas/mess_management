@@ -1,2 +1,7 @@
-<h1>Student#pay_bill</h1>
-<p>Find me in app/views/student/pay_bill.html.erb</p>
+<% if @totalbill != -1 %>
+<h1>Your total Bill so far is</h1>
+<p>Bill : Rs = <%= @totalbill %></p>
+<a href="https://www.onlinesbi.com/prelogin/icollecthome.htm">Pay at SBI collect</a>
+<% else %>
+<h1>You don't have any outstanding bill !</h1>
+<% end %>
