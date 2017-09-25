@@ -1,29 +1,10 @@
-<h1>Manager#update_mess_cut</h1>
-<% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
-  <% end %>
+<%=form_for @cut, url: {action: "update_mess_cut"} do |f| %>
+<table summary="Subject form fields">
+  <tr>
+    <th>Status</th>
+    <td><%= f.select :status, [['Approve', 'yes'], ['Deny', 'no']] %></td>
+  </tr>
+  <td><%= f.submit("Update") %></td>
 
 
-<table>
-    <tr>
-
-      <th>Roll_no</th>
-      <th>Name</th>
-      <th>From</th>
-      <th>To</th>
-      <th>Status</th>
-    </tr>
-   <% @cuts.each do |cut| %>
-    <tr>
-      <td><%= cut.roll_no %></td>
-      <td class="center"><%= cut.name %></td>
-      <td class="center"><%= cut.from %></td>
-      <td class="center"><%= cut.to %></td>
-      <td class="center">
-        <%=form_for @cut, url: {action: "update_mess_cut"} do |f| %>
-          <%= f.radio_button :status, 'approve', :checked => true %>
-        <% end %>
-      </td>
-    </tr>
-    <% end %>
-  </table>
+<% end %>

@@ -115,7 +115,7 @@ class ManagerController < ApplicationController
       @cuts = MessCut.all
     end
     if request.post?
-      @cut = MessCut.find(params[:id])
+      #@cut = MessCut.find(params[:id])
     end
 
   end
@@ -125,12 +125,11 @@ class ManagerController < ApplicationController
     if ((session[:v] != 1) || !(session[:admin] || session[:password]))
       redirect_to(manager_login_path)
     end
-    @cuts = MessCut.all
+    @cut = MessCut.find(params[:id])
     if request.patch?
-
-      if @cut.update_attributes(cut_params)
+      if  @cut.update_attributes(mess_cut_params)
         flash[:notice] = "Successfully updated menu ... "
-      #  redirect_to(manager_view_menu_path)
+        redirect_to(manager_add_mess_cut_path)
       end
     end
   end
@@ -274,31 +273,31 @@ class ManagerController < ApplicationController
   
   end
 
-  def change_password
-    if !(session[:roll_no] || session[:password])
-      redirect_to(student_login_path)
-    end
-
-    if request.get?
-      @credentials = Adminn.new
-      @savedornot = ""
-    end
-
-    if request.post?
-      @savedornot = ""
-      @credentials = Adminn.new(changepass_params)
-      @querydb = Adminn.where(roll_no: session[:roll_no], password: @credentials.admin)
-      if !@querydb.empty?
-        @savedornot = "Successfully Changed the password"
-        @querydb[0].password = @credentials.password
-        @querydb[0].save
-      else
-        @savedornot = "You entered wrong Old password"
-      end
-    end
-
-
-  end
+  # def change_password
+  #   if !(session[:roll_no] || session[:password])
+  #     redirect_to(student_login_path)
+  #   end
+  #
+  #   if request.get?
+  #     @credentials = Adminn.new
+  #     @savedornot = ""
+  #   end
+  #
+  #   if request.post?
+  #     @savedornot = ""
+  #     @credentials = Adminn.new(adminn_params)
+  #     @querydb = Adminn.where(roll_no: session[:roll_no], password: @credentials.admin)
+  #     if !@querydb.empty?
+  #       @savedornot = "Successfully Changed the password"
+  #       @querydb[0].password = @credentials.password
+  #       @querydb[0].save
+  #     else
+  #       @savedornot = "You entered wrong Old password"
+  #     end
+  #   end
+  #
+  #
+  # end
 
 
 
@@ -333,6 +332,10 @@ private
     params.require(:bill).permit(:status)
   end
 
-  def changepass_params
-    params.require(:adminn).permit(:admin, :password)
+  def mess_cut_params
+    params.require(:mess_cut).permit(:roll_no, :name, :from, :to, :status)
   end
+
+  # def changepass_params
+  #   params.require(:adminn).permit(:admin, :password)
+  # end
